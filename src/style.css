@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.grid-size-button {
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    justify-content: center;
+    margin: 20px auto;
+    background-color: #333;
+    border: 5px solid #6c63ff;
+    border-radius: 10px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-color: #222;
+    border: 2px solid #6c63ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #444;
+}
+
+.cell.winning {
+    border: 3px solid red;
+}
+
+.cell.x {
+    color: blue;
+}
+
+.cell.o {
+    color: red;
+}
+
+#status {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.game-mode-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.mode-button {
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.mode-button:hover {
+    background-color: #4a47a3;
+}
+
+.timer {
+    text-align: center;
+    font-size: 1.2em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.status-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #333;
+}
+
+.session-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.generate-code-button, .join-session-button {
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px;
+}
+
+.generate-code-button:hover, .join-session-button:hover {
+    background-color: #4a47a3;
+}
+
+.session-code-display {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+#join-code {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #6c63ff;
+    border-radius: 5px;
+    width: 200px;
+}
