@@ -1,5 +1,5 @@
 const cells = document.querySelectorAll('.cell');
-const statusDisplay = document.querySelector('.status');
+const statusDisplay = document.querySelector('.status-message');
 const startButton = document.querySelector('.start-button');
 const pauseButton = document.querySelector('.pause-button');
 const restartButton = document.querySelector('.restart-button');
@@ -11,7 +11,7 @@ const joinSessionButton = document.querySelector('.join-session-button');
 const sessionCodeDisplay = document.getElementById('session-code');
 const joinCodeInput = document.getElementById('join-code');
 
-let currentPlayer = 'X';
+let currentPlayer = '🐯';
 let gameActive = true;
 let isPaused = false;
 let isPlayerVsComputer = false;
@@ -80,7 +80,7 @@ function checkResult() {
         return;
     }
 
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    currentPlayer = currentPlayer === '🐯' ? '🐒' : '🐯';
     statusDisplay.textContent = `It's ${currentPlayer}'s turn`;
 }
 
@@ -90,7 +90,7 @@ function resetGame() {
         cell.textContent = '';
         cell.style.border = '';
     });
-    currentPlayer = 'X';
+    currentPlayer = '🐯';
     gameActive = true;
     isPaused = false;
     statusMessage.textContent = 'Game restarted!';
@@ -112,11 +112,11 @@ function startMoveTimer() {
 
     moveTimer = setTimeout(() => {
         clearInterval(timerInterval);
-        if (isPlayerVsComputer && currentPlayer === 'O') {
+        if (isPlayerVsComputer && currentPlayer === '🐒') {
             computerMove();
         } else {
             statusMessage.textContent = `Player ${currentPlayer} ran out of time!`;
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            currentPlayer = currentPlayer === '🐯' ? '🐒' : '🐯';
             startMoveTimer();
         }
     }, moveTimeLimit);
@@ -129,14 +129,14 @@ cells.forEach((cell, index) => {
             gameState[index] = currentPlayer;
             cell.textContent = currentPlayer;
             checkResult();
-            if (isPlayerVsComputer && currentPlayer === 'X' && gameActive) {
-                currentPlayer = 'O';
+            if (isPlayerVsComputer && currentPlayer === '🐯' && gameActive) {
+                currentPlayer = '🐒';
                 setTimeout(() => {
                     computerMove();
                     startMoveTimer(); // Start timer after computer move
                 }, 500);
             } else {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                currentPlayer = currentPlayer === '🐯' ? '🐒' : '🐯';
                 startMoveTimer(); // Start timer after player move
             }
         }
@@ -149,10 +149,10 @@ function computerMove() {
     const emptyCells = gameState.map((val, index) => (val === '' ? index : null)).filter(val => val !== null);
     if (emptyCells.length > 0) {
         const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        gameState[randomIndex] = 'O';
-        cells[randomIndex].textContent = 'O';
+        gameState[randomIndex] = '🐒';
+        cells[randomIndex].textContent = '🐒';
         checkResult();
-        currentPlayer = 'X';
+        currentPlayer = '🐯';
         startMoveTimer();
     }
 }
