@@ -1,14 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 10px;
     background: linear-gradient(135deg, #2d5016 0%, #4a7c59 50%, #68a063 100%);
     background-image: 
+        /* Trees */
+        radial-gradient(ellipse 30px 60px at 10% 90%, #3e5722 0%, transparent 50%),
+        radial-gradient(ellipse 25px 50px at 15% 85%, #2d4016 0%, transparent 60%),
+        radial-gradient(ellipse 35px 70px at 85% 90%, #3e5722 0%, transparent 50%),
+        radial-gradient(ellipse 28px 55px at 90% 85%, #2d4016 0%, transparent 60%),
+        radial-gradient(ellipse 40px 80px at 5% 95%, #4a5d2a 0%, transparent 40%),
+        radial-gradient(ellipse 32px 65px at 95% 95%, #4a5d2a 0%, transparent 40%),
+        /* Animals and foliage */
         radial-gradient(circle at 20% 20%, rgba(46, 125, 50, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(139, 195, 74, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 60%, rgba(76, 175, 80, 0.2) 0%, transparent 50%);
+        radial-gradient(circle at 40% 60%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(102, 187, 106, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 30% 80%, rgba(129, 199, 132, 0.2) 0%, transparent 45%);
+    background-attachment: fixed;
 }
 
 h1 {
@@ -19,6 +36,20 @@ h1 {
     font-size: 2.5em;
 }
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+}
+
 .game-header {
     display: flex;
     justify-content: space-between;
@@ -26,6 +57,16 @@ h1 {
     margin-bottom: 20px;
     color: #2d5016;
     font-family: 'Arial', sans-serif;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 15px;
+    }
 }
 
 .grid-size-button {
@@ -42,8 +83,8 @@ h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, minmax(80px, 100px));
+    grid-template-rows: repeat(3, minmax(80px, 100px));
     gap: 5px;
     justify-content: center;
     margin: 20px auto;
@@ -52,6 +93,27 @@ h1 {
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(70px, 90px));
+        grid-template-rows: repeat(3, minmax(70px, 90px));
+        margin: 15px auto;
+        padding: 8px;
+        border: 3px solid #8d6e63;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(60px, 80px));
+        grid-template-rows: repeat(3, minmax(60px, 80px));
+        margin: 10px auto;
+        padding: 6px;
+        gap: 3px;
+    }
 }
 
 .cell {
@@ -66,6 +128,21 @@ h1 {
     transition: all 0.3s;
     border-radius: 8px;
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .cell {
+        font-size: 2em;
+        border: 2px solid #8d6e63;
+    }
+}
+
+@media (max-width: 480px) {
+    .cell {
+        font-size: 1.8em;
+        border: 2px solid #8d6e63;
+        border-radius: 6px;
+    }
 }
 
 .cell:hover {
@@ -92,6 +169,26 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     border: 3px solid #8d6e63;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 15px;
+        margin: 0 10px;
+        border-radius: 15px;
+        border: 2px solid #8d6e63;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 10px;
+        margin: 0 5px;
+        border-radius: 10px;
+    }
 }
 
 #status {
@@ -107,6 +204,14 @@ h1 {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .controls {
+        gap: 8px;
+        margin-top: 15px;
+    }
 }
 
 button {
@@ -120,6 +225,24 @@ button {
     transition: all 0.3s;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border: 2px solid #2e7d32;
+    min-width: 100px;
+}
+
+@media (max-width: 768px) {
+    button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        min-width: 70px;
+        border-radius: 6px;
+    }
 }
 
 button:hover {
@@ -133,6 +256,14 @@ button:hover {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .game-mode-buttons {
+        gap: 8px;
+        margin-top: 15px;
+    }
 }
 
 .mode-button {
@@ -175,6 +306,14 @@ button:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .session-controls {
+        margin-top: 15px;
+        gap: 8px;
+    }
 }
 
 .generate-code-button, .join-session-button {
@@ -210,6 +349,28 @@ button:hover {
     border: 3px solid #8d6e63;
     border-radius: 8px;
     width: 200px;
+    max-width: 100%;
     background: rgba(255,255,255,0.9);
     color: #2d5016;
+}
+
+@media (max-width: 480px) {
+    #join-code {
+        padding: 8px;
+        font-size: 0.9em;
+        width: 150px;
+        border: 2px solid #8d6e63;
+        border-radius: 6px;
+    }
+}
+
+.install-button {
+    background: linear-gradient(145deg, #ff6f00, #f57c00) !important;
+    color: white !important;
+    border: 2px solid #ef6c00 !important;
+    margin-top: 10px;
+}
+
+.install-button:hover {
+    background: linear-gradient(145deg, #f57c00, #ef6c00) !important;
 }
